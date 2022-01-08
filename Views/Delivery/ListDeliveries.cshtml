@@ -1,0 +1,37 @@
+@if (ViewBag.Deliveries.Count > 0)
+{
+  <div class="d-flex justify-content-between mb-3">
+        <h3>All deleveries!</h3>
+        <a href="/deliveries/add" class="btn btn-success">Add a delivery</a>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Reciever</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Delivery Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var delivery in ViewBag.Deliveries)
+      {
+        <tr>
+          <td>@delivery.DeliveryId</td>
+          <td>@delivery.RecieverName</td>
+          <td>@delivery.PhoneNumber</td>
+          <td>@delivery.City & @delivery.Address</td>
+          <td>@delivery.OrderStatus</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+else
+{
+  <div class="d-flex justify-content-between mb-3">
+      <h3>There are no deleveries!</h3>
+      <a href="/deliveries/add" class="btn btn-success">Add a delivery</a>
+  </div>
+}

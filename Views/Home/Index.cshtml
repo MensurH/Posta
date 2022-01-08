@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    if (ViewBag.Deliveries.Count > 0)
+    {
+        <div class="d-flex justify-content-between mb-3">
+            <h3>All deleveries registered or on route!</h3>
+            <a href="/deliveries/add" class="btn btn-success">Add a delivery</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Reciever</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Delivery Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var delivery in ViewBag.Deliveries)
+                {
+                    <tr>
+                        <td>@delivery.DeliveryId</td>
+                        <td>@delivery.RecieverName</td>
+                        <td>@delivery.PhoneNumber</td>
+                        <td>@delivery.City & @delivery.Address</td>
+                        <td>@delivery.OrderStatus</td>
+                        <td>
+                            <form asp-action="CancelDelivery" asp-controller="Delivery" asp-route-id="@delivery.DeliveryId"
+                                method="post">
+                                <a href="/deliveries/@delivery.DeliveryId" class="btn btn-warning">Edit Info</a>
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @* <div id="pagination-div">
+            <ul class="pagination">
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+            </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+            </a>
+            </li>
+            </ul>
+            </div> *@
+    }
+    else
+    {
+        <div class="d-flex justify-content-between mb-3">
+            <h3>There are no deleveries registered or on route!</h3>
+            <a href="/deliveries/add" class="btn btn-success">Add a delivery</a>
+        </div>
+    }
+
+}

@@ -1,0 +1,74 @@
+@model Posta.Models.UpdateStatusModel
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <tr>
+                            <th scope="col">Sender Name</th>
+                            <td>@ViewBag.Delivery.User.FullName</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Sender Phone Number</th>
+                            <td>@ViewBag.Delivery.User.PhoneNumber</td>
+                        </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="col">Reciever Name</th>
+                        <td>@ViewBag.Delivery.RecieverName</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Phone Number</th>
+                        <td>@ViewBag.Delivery.PhoneNumber</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">City</th>
+                        <td>@ViewBag.Delivery.City</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Address</th>
+                        <td>@ViewBag.Delivery.Address</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Delivery Status</th>
+                        <td>@ViewBag.Delivery.OrderStatus</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        @if(ViewBag.Delivery.OrderStatus == "En Route" || ViewBag.Delivery.OrderStatus == "Registered"){
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Update Delivery Status</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="UpdateStatus" asp-controller="Delivery" method="post">
+                        <input type="hidden" asp-for="DeliveryId" value="@ViewBag.Delivery.DeliveryId">
+                        <div class="form-group">
+                            <label asp-for="OrderStatus"></label>
+                            <select asp-for="OrderStatus" class="form-control">
+                                @if(ViewBag.Delivery.OrderStatus == "Registered"){
+                                    <option value="En Route">En Route</option>
+                                }
+                                else {
+                                    <option value="Delivered">Delivered</option>
+                                    <option value="Refused">Refused</option>
+                                }
+                            </select>
+                            <span asp-validation-for="OrderStatus" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Update Status</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    
+</div>

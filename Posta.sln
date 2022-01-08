@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Posta", "Posta.csproj", "{602CC04C-C0E9-4102-98F5-B802135EBFCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{602CC04C-C0E9-4102-98F5-B802135EBFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602CC04C-C0E9-4102-98F5-B802135EBFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602CC04C-C0E9-4102-98F5-B802135EBFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602CC04C-C0E9-4102-98F5-B802135EBFCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {986B2EFA-B5DE-49D5-A5BD-5C93E994C14F}
+	EndGlobalSection
+EndGlobal

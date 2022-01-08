@@ -1,0 +1,59 @@
+@model List<Member>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item active"><h3>All Roles</h3></li>
+                @if(ViewBag.Roles.Count > 0)
+                {
+                    foreach(var role in ViewBag.Roles)
+                    {
+                        <li class="list-group-item">
+                            <h4>@role.Name</h4>            
+                            <form asp-action="DeleteRole" asp-controller="Administration" asp-route-id="@role.Id" method="post">
+                                <a asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id" class="btn btn-primary">Edit Role</a>
+                                <a asp-action="AddUserToRole" asp-controller="Administration" asp-route-roleId="@role.Id" class="btn btn-success">Add User</a>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item">No roles exist yet</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            @if(@Model.Any())
+            {
+                <h4>All members of the company</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">User Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var member in Model)
+                        {
+                            <tr>
+                                <td>@member.User.FullName</td>
+                                <td>@member.User.UserName</td>
+                                <td>@member.User.City</td>
+                                <td>@member.User.PhoneNumber</td>
+                                <td>@member.Role</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+@model Posta.Models.Delivery
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-controller="Delivery" asp-action="AddDelivery" method="post">
+                <h4>Reciever Info</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RecieverName"></label>
+                    <input asp-for="RecieverName" class="form-control" />
+                    <span asp-validation-for="RecieverName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City"></label>
+                    <select asp-for="City" class="form-control">
+                        <option value="">choose a city</option>
+                        <option value="Prishtine">Prishtine</option>
+                        <option value="Vushtrri">Vushtrri</option>
+                        <option value="Rahovec">Rahovec</option>
+                    </select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Add Delivery">
+                    <a href="/" class="btn btn-primary">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
